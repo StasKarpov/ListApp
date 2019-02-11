@@ -1,0 +1,12 @@
+.page-panel {
+  margin: auto;
+  display: table;
+}
+
+.page-panel button {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 900;
+  background-color: transparent;
+  border: 0px;
+}
