@@ -8,6 +8,8 @@ table {
 
 table  tr {
   height: 50px;
+  border-bottom: 3px solid #d7d8da;
+
 }
 
 tr:nth-child(even){
@@ -16,20 +18,34 @@ tr:nth-child(even){
 
 .grey-text {
   color: #a3a3a3;
+  font-weight: 300;
 }
 
 .small-text {
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .table input {
-  height: 50px;
+  height: 30px;
   width: 500px;
   border: 0px;
   background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: 5px 11px;
+  background-size: 13px 13px;
+  padding-left: 25px;
+  font-weight: 600;
 }
 
+::placeholder {
+  color: #a3a3a3;
+}
 
 .table input:focus {
   outline: none;
+}
+
+.search-input img {
+  width: 13px;
+  float: left;
 }

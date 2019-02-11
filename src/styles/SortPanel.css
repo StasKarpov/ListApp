@@ -1,0 +1,18 @@
+.sort-panel img {
+  height: 8px;
+  width: 1px;
+}
+
+.sort-panel {
+  font-size: 8px;
+  color: #a3a3a3;
+
+}
+
+.sort-panel button {
+  font-size: 10px;
+  color: #a3a3a3;
+  background-color: #fff;
+  border: 1px solid #d7d8da;
+  margin: 1px;
+}

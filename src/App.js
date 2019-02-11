@@ -19,12 +19,21 @@ class App extends Component {
         return e
     })
 
+    //count all data and give a number to every record
+    changed_data = changed_data.map((e,i) => Object.assign({},e,{id:i+1}))
+
+    //find top 3
+    let top_3 = changed_data.sort((a,b)=>a.pageviews>b.pageviews).slice(0,3)
+    Object.assign(top_3[0],{medal:'gold'})
+    Object.assign(top_3[1],{medal:'silver'})
+    Object.assign(top_3[2],{medal:'bronze'})
+
     this.state = {
       fetchedData:changed_data,//to save original data when filtering
-      data:changed_data.map((e,i) => Object.assign({},e,{id:i+1})),//all data with numbers
+      data:changed_data,//all data with numbers
       page:1,
-      sort_direction:ASC,
-      sort:undefined,
+      sort_direction:DESC,
+      sort:BY_PAGE_VIEWS,
       filterValue:''
     }
   }
@@ -72,25 +81,12 @@ class App extends Component {
     })
   }
 
-  //set ascending order of displayed items
-  set_asc_order(){
+  //set ascending order of displayed items if descending order was and vice versa
+  toogle_order(){
     let new_data = this.state.data
-    if(this.state.sort_direction === DESC){
-      new_data.reverse()
-    }
+    new_data.reverse()
     this.setState({
-      sort_direction:ASC,
-      data:new_data
-    })
-  }
-
-  set_desc_order(){
-    let new_data = this.state.data
-    if(this.state.sort_direction === ASC){
-      new_data.reverse()
-    }
-    this.setState({
-      sort_direction:DESC,
+      sort_direction:this.state.sort_direction===ASC?DESC:ASC,
       data:new_data
     })
   }
@@ -126,8 +122,7 @@ class App extends Component {
       records={data.slice((page-1)*10,Math.min(data.length,page*10))}
       sort_by_name={()=>this.set_order_by_name()}
       sort_by_views={()=>this.set_order_by_views()}
-      set_asc_order={()=>this.set_asc_order()}
-      set_desc_order={()=>this.set_desc_order()}
+      toogle_order={()=>this.toogle_order()}
       inc_page={()=>this.inc_page()}
       dec_page={()=>this.dec_page()}
       sort={sort}
